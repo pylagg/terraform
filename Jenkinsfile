@@ -1,25 +1,22 @@
 pipeline {
- agent any
- stages {
- stage("Set terraform path") {
- steps {
- script {
- def tfHome = tool name: ‘Terraform’
- env.PATH = “ $tfHome : $env.PATH ”
- }
- bat ‘terraform — version’
- }
- }
+  agent any
+  stages {
+   stage("Set terraform path") {
+    steps {
+     script {
+      def tfHome = tool name: ‘Terraform’
+      env.PATH = “ $tfHome : $env.PATH ”
+     }
+     bat ‘terraform — version’
+    }
+  }
  
- stage("Provision infrastructure") {
- steps {
- / dir(‘dev’)
- /{
- bat ‘terraform init’
- bat ‘terraform plan’
- bat ‘terraform apply’
- /}
- }
- }
+  stage("Provision infrastructure") {
+  steps {
+   bat ‘terraform init’
+   bat ‘terraform plan’
+   bat ‘terraform apply’
+  }
+  }
  }
 }
