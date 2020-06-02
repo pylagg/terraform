@@ -1,9 +1,12 @@
 pipeline {
   agent any
+  tools {
+    terraform 'Terraform'
+  }
   stages {
    stage("Set terraform path") {
     steps {
-      bat "${env.Terraform}/terraform --version"
+      bat "terraform --version"
     }
   }
  
