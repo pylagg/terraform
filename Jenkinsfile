@@ -1,7 +1,7 @@
 pipeline {
  agent any
  stages {
- stage(‘Set terraform path’) {
+ stage("Set terraform path") {
  steps {
  script {
  def tfHome = tool name: ‘Terraform’
@@ -11,7 +11,7 @@ pipeline {
  }
  }
  
- stage(‘Provision infrastructure’) {
+ stage("Provision infrastructure") {
  steps {
  / dir(‘dev’)
  /{
