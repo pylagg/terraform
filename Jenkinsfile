@@ -3,10 +3,10 @@ pipeline {
   stages {
    stage("Set terraform path") {
     steps {
-    / script {
+    
        def tfHome = tool name: 'Terraform'
        env.PATH = "${tfHome};${env.PATH}"
-     /}
+     
      bat 'terraform -version'
     }
   }
