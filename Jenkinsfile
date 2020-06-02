@@ -3,7 +3,7 @@ pipeline {
   stages {
    stage("Set terraform path") {
     steps {
-      bat "${tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'}\terraform --version"
+      bat "${tool name: 'Terraform'}\terraform --version"
     }
   }
  
