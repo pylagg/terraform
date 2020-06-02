@@ -7,18 +7,18 @@ pipeline {
  def tfHome = tool name: ‘Terraform’
  env.PATH = “${tfHome}:${env.PATH}”
  }
- sh ‘terraform — version’
+ bat ‘terraform — version’
  }
  }
  
  stage(‘Provision infrastructure’) {
  steps {
- #dir(‘dev’)
- #{
- sh ‘terraform init’
- sh ‘terraform plan’
- sh ‘terraform apply’
- #}
+ / dir(‘dev’)
+ /{
+ bat ‘terraform init’
+ bat ‘terraform plan’
+ bat ‘terraform apply’
+ /}
  }
  }
  }
