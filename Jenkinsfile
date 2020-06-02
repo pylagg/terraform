@@ -6,7 +6,7 @@ pipeline {
   stages {
    stage("Set terraform path") {
     steps {
-      sh 'terraform --version'    }
+      bat 'terraform --version'    }
   }
  
   stage("Provision infrastructure") {
