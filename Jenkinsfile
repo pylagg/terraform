@@ -26,6 +26,7 @@ pipeline {
                         expression { params.Action_To_Perform == 'Delete Infrastructure' }
                   }
                   steps {
+                        bat 'terraform init'
                         bat 'terraform destroy -auto-approve'
                   }
            }
