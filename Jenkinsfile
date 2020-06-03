@@ -4,11 +4,6 @@ pipeline {
     terraform 'Terraform'
   }
   stages {
-   stage("Set terraform path") {
-    steps {
-      bat 'terraform --version'    }
-  }
- 
   stage("Provision infrastructure") {
   steps {
     bat 'terraform init'
