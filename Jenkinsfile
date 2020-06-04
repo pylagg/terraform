@@ -2,9 +2,9 @@ pipeline {
     agent {
         label 'docker_slave'
     }
-    /* tools {
+    tools {
           terraform 'Terraform'
-    } */
+    }
     parameters {
                 choice(
                        choices: ['Create Infrastructure' , 'Delete Infrastructure'],
