@@ -1,8 +1,10 @@
 pipeline {
-    agent any
-    tools {
-          terraform 'Terraform'
+    agent {
+        label 'docker_slave'
     }
+    /* tools {
+          terraform 'Terraform'
+    } */
     parameters {
                 choice(
                        choices: ['Create Infrastructure' , 'Delete Infrastructure'],
@@ -15,9 +17,9 @@ pipeline {
                         expression { params.Action_To_Perform == 'Create Infrastructure' }
                   }
                   steps {
-                      bat 'terraform init'
-                      bat 'terraform plan'
-                      bat 'terraform apply -auto-approve'
+                      sh 'terraform init'
+                      sh 'terraform plan'
+                      sh 'terraform apply -auto-approve'
                   }
            }
       
@@ -26,7 +28,7 @@ pipeline {
                         expression { params.Action_To_Perform == 'Delete Infrastructure' }
                   }
                 steps {
-                        bat 'terraform destroy -auto-approve'
+                        sh 'terraform destroy -auto-approve'
                   }
            }
  }
